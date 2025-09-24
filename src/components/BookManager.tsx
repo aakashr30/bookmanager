@@ -3,7 +3,6 @@ import { Upload, Download, RotateCcw, Search, Filter, ChevronUp, ChevronDown, Lo
 import * as Papa from 'papaparse';
 import { faker } from '@faker-js/faker';
 
-// Type definitions
 interface Book {
     Title: string;
     Author: string;
@@ -170,78 +169,6 @@ const VirtualRow: React.FC<VirtualRowProps> = React.memo(({ book, index, onEdit,
                 </>
             )}
         </div>
-        // <div
-        //     style={style}
-        //     className={`grid grid-cols-7 gap-2 p-2 border-b text-sm ${isModified ? 'bg-yellow-100 border-yellow-300' : 'hover:bg-gray-50'
-        //         }`}
-        // >
-        //     <div className="font-medium text-xs text-gray-500">#{index + 1}</div>
-        //     {isEditing ? (
-        //         <>
-        //             <input
-        //                 value={editData.Title}
-        //                 onChange={handleInputChange('Title')}
-        //                 className="px-2 py-1 border rounded text-xs"
-        //                 placeholder="Title"
-        //             />
-        //             <input
-        //                 value={editData.Author}
-        //                 onChange={handleInputChange('Author')}
-        //                 className="px-2 py-1 border rounded text-xs"
-        //                 placeholder="Author"
-        //             />
-        //             <input
-        //                 value={editData.Genre}
-        //                 onChange={handleInputChange('Genre')}
-        //                 className="px-2 py-1 border rounded text-xs"
-        //                 placeholder="Genre"
-        //             />
-        //             <input
-        //                 type="number"
-        //                 value={editData.PublishedYear}
-        //                 onChange={handleInputChange('PublishedYear')}
-        //                 className="px-2 py-1 border rounded text-xs"
-        //                 placeholder="Year"
-        //                 min="1800"
-        //                 max="2024"
-        //             />
-        //             <input
-        //                 value={editData.ISBN}
-        //                 onChange={handleInputChange('ISBN')}
-        //                 className="px-2 py-1 border rounded text-xs"
-        //                 placeholder="ISBN"
-        //             />
-        //             <div className="flex gap-1">
-        //                 <button
-        //                     onClick={handleSave}
-        //                     className="px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600 transition-colors"
-        //                 >
-        //                     Save
-        //                 </button>
-        //                 <button
-        //                     onClick={handleCancel}
-        //                     className="px-2 py-1 bg-gray-500 text-white rounded text-xs hover:bg-gray-600 transition-colors"
-        //                 >
-        //                     Cancel
-        //                 </button>
-        //             </div>
-        //         </>
-        //     ) : (
-        //         <>
-        //             <div className="truncate" title={book.Title}>{book.Title}</div>
-        //             <div className="truncate" title={book.Author}>{book.Author}</div>
-        //             <div className="truncate">{book.Genre}</div>
-        //             <div>{book.PublishedYear}</div>
-        //             <div className="truncate">{book.ISBN}</div>
-        //             <button
-        //                 onClick={() => setIsEditing(true)}
-        //                 className="px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600 transition-colors flex items-center gap-1"
-        //             >
-        //                 <Edit3 size={12} /> Edit
-        //             </button>
-        //         </>
-        //     )}
-        // </div>
 
     );
 });
@@ -275,93 +202,7 @@ const CSVBookManager: React.FC = () => {
         }, 100);
     }, []);
 
-    // const handleFileUpload = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
-    //     const file = event.target.files?.[0];
-    //     if (!file) return;
 
-    //     setLoading(true);
-    //     // Papa.parse<string[]>(file, {
-    //     //     complete: (results) => {
-    //     //         const parsedBooks: Book[] = results.data
-    //     //             .slice(1)
-    //     //             .filter((row: string[]) => row.length >= 5)
-    //     //             .map((row: string[]) => ({
-    //     //                 Title: row[0] || '',
-    //     //                 Author: row[1] || '',
-    //     //                 Genre: row[2] || '',
-    //     //                 PublishedYear: parseInt(row[3]) || 0,
-    //     //                 ISBN: row[4] || ''
-    //     //             }));
-
-    //     //         setBooks(parsedBooks);
-    //     //         setOriginalBooks([...parsedBooks]);
-    //     //         setModifiedRows(new Set());
-    //     //         setCurrentPage(1);
-    //     //         setLoading(false);
-    //     //     },
-    //     //     header: false,
-    //     //     skipEmptyLines: true,
-    //     //     error: (error: Papa.ParseError) => {
-    //     //         console.error('Error parsing CSV:', error);
-    //     //         setLoading(false);
-    //     //     }
-    //     // });
-    //     Papa.parse<Book>(file, {
-    //         header: true,
-    //         skipEmptyLines: true,
-    //         complete: (results) => {
-    //             console.log('Parsed books:', results.data);
-    //             setBooks(results.data);
-    //             setOriginalBooks([...results.data]);
-    //             setModifiedRows(new Set());
-    //             setCurrentPage(1);
-    //             setLoading(false);
-    //         },
-    //         error: (error) => {
-    //             console.error('Error parsing CSV:', error);
-    //             setLoading(false);
-    //         },
-    //     });
-
-    // }, []);
-    // const handleFileUpload = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
-    //     const file = event.target.files?.[0];
-    //     if (!file) return;
-
-    //     setLoading(true);
-
-    //     Papa.parse<Book>(file, {
-    //         header: true, // assuming CSV has headers
-    //         skipEmptyLines: true,
-    //         complete: (results) => {
-    //             const parsedBooks: Book[] = results.data.map((row: any) => ({
-    //                 Title: row.Title || '',
-    //                 Author: row.Author || '',
-    //                 Genre: row.Genre || '',
-    //                 PublishedYear: parseInt(row.PublishedYear) || 0,
-    //                 ISBN: row.ISBN || ''
-    //             }));
-
-    //             setBooks(prevBooks => {
-    //                 const merged = [...prevBooks, ...parsedBooks];
-    //                 return merged;
-    //             });
-
-    //             setOriginalBooks(prevBooks => {
-    //                 const mergedOriginal = [...prevBooks, ...parsedBooks];
-    //                 return mergedOriginal;
-    //             });
-
-    //             setModifiedRows(new Set());
-    //             setCurrentPage(1);
-    //             setLoading(false);
-    //         },
-    //         error: (error) => {
-    //             console.error('Error parsing CSV:', error);
-    //             setLoading(false);
-    //         }
-    //     });
-    // }, []);
     const handleFileUpload = useCallback((event: ChangeEvent<HTMLInputElement>): void => {
         const file = event.target.files?.[0];
         if (!file) return;
