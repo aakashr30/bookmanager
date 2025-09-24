@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect, type CSSProperties, type ChangeEvent } from 'react';
-import { Upload, Download, RotateCcw, Search, Filter, ChevronUp, ChevronDown, Loader, FileText, Database, Edit3, RefreshCw } from 'lucide-react';
+import { Upload, Download, RotateCcw, Search, Filter, ChevronUp, ChevronDown, Loader, Edit3, RefreshCw } from 'lucide-react';
 import * as Papa from 'papaparse';
 import { faker } from '@faker-js/faker';
 
